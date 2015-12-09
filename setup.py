@@ -21,7 +21,7 @@ def _install_notebook_extension():
     print('Installing notebook extension')
     cm.update('notebook', { 
         'jupyter_cms_bundlers': {
-            'dockerfile_download': {
+            'microservice_dockerfile_download': {
                 'label': 'Microservice Docker bundle (.zip)',
                 'module_name': 'kernel_gateway_bundlers.dockerfile_download',
                 'group': 'download'
