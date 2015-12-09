@@ -1,6 +1,8 @@
-# Kernel Gateway Bundlers
+[![PyPI version](https://badge.fury.io/py/jupyter_kernel_gateway_bundlers.svg)](https://badge.fury.io/py/jupyter_dashboards) [![Google Group](https://img.shields.io/badge/-Google%20Group-lightgrey.svg)](https://groups.google.com/forum/#!forum/jupyter)
 
-Collection of reference implementation bundlers that convert, package, and deploy notebooks as standalone HTTP microservices beyond a kernel gateway.
+# Jupyter Kernel Gateway Bundlers
+
+Collection of reference implementation bundlers that convert, package, and deploy notebooks as standalone HTTP microservices behind a kernel gateway.
 
 ## What It Gives You
 
@@ -14,7 +16,7 @@ Collection of reference implementation bundlers that convert, package, and deplo
 
 ## Install It
 
-`pip install jupyter_kernel_gateeway_bundlers`
+`pip install jupyter_kernel_gateway_bundlers`
 
 Restart your Notebook server if you did not have `jupyter_cms` previously installed.
 
@@ -22,6 +24,6 @@ Restart your Notebook server if you did not have `jupyter_cms` previously instal
 
 Currently, there is only one download bundler available in this package. To use it:
 
-1. Write a notebook that includes microservice metadata (TODO: need link to format in kernel_gateway repo)
+1. Write a notebook that includes metadata for the [kernel gateway notebook-http mode](https://github.com/jupyter-incubator/kernel_gateway#notebook-http-mode)
 2. Click *File &rarr; Download as &rarr; Microservice Docker bundle (.zip)*
 3. Follow the README in the downloaded bundle.
