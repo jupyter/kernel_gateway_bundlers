@@ -45,9 +45,10 @@ setup(
     author_email='jupyter@googlegroups.com',
     description='Plugins for jupyter_cms to deploy and download notebooks as kernel gateway microservices',
     long_description = '''
-    This package adds a *Deploy as* menu item that:
-
-TODO
+    This package adds a *Download as* menu item that packages the current notebook, 
+a Dockerfile, and a README in a zip download. When built, the Docker image is
+configured to expose the notebook as a HTTP microservice using the 
+jupyter_kernel_gateway.
 
 See `the project README <https://github.com/jupyter-incubator/kernel_gateway_bundlers>`_
 for more information. 
