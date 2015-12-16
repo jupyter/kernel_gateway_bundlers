@@ -6,7 +6,7 @@
 # Version of Python to dev/test against
 PYTHON?=python3
 # CMS package to use, expressed as a pip installable
-CMS_PACKAGE?=git+https://github.com/parente/contentmanagement.git@deploy-extension
+CMS_PACKAGE?=git+https://github.com/jupyter-incubator/contentmanagement.git
 
 # Using pyspark notebook to get both a python2 and python3 env
 REPO:=jupyter/pyspark-notebook:a388c4a66fd4
