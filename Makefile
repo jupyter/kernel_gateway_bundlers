@@ -6,7 +6,7 @@
 # Version of Python to dev/test against
 PYTHON?=python3
 # CMS package to use, expressed as a pip installable
-CMS_PACKAGE?='jupyter_cms>=0.3.0'
+CMS_PACKAGE?=jupyter_cms
 
 # Using pyspark notebook to get both a python2 and python3 env
 REPO:=jupyter/pyspark-notebook:a388c4a66fd4
