@@ -3,10 +3,6 @@
 
 import os
 from setuptools import setup
-from setuptools.command.install import install
-from setuptools.command.develop import develop
-
-from notebook.services.config import ConfigManager
 
 # Get location of this file at runtime
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -15,29 +11,6 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 VERSION_NS = {}
 with open(os.path.join(HERE, 'kernel_gateway_bundlers/_version.py')) as f:
     exec(f.read(), {}, VERSION_NS)
-
-def _install_notebook_extension():
-    cm = ConfigManager()
-    print('Installing notebook extension')
-    cm.update('notebook', { 
-        'jupyter_cms_bundlers': {
-            'microservice_dockerfile_download': {
-                'label': 'Microservice Docker bundle (.zip)',
-                'module_name': 'kernel_gateway_bundlers.dockerfile_download',
-                'group': 'download'
-            }
-        }
-    })
-
-class InstallCommand(install):
-    def run(self):
-        super(InstallCommand, self).run()
-        _install_notebook_extension()
-
-class DevelopCommand(develop):
-    def run(self):
-        super(DevelopCommand, self).run()
-        _install_notebook_extension()
 
 setup(
     name='jupyter_kernel_gateway_bundlers',
@@ -60,11 +33,11 @@ for more information.
     packages=[
         'kernel_gateway_bundlers'
     ],
+    include_package_data=True,
+    scripts=[
+        'scripts/jupyter-kernel_gateway_bundlers'
+    ],
     install_requires=['jupyter_cms>=0.3.0'],
-    cmdclass={
-        'install': InstallCommand,
-        'develop': DevelopCommand,
-    },
     classifiers=[
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
