@@ -32,8 +32,10 @@ help:
 build:
 	@-docker rm -f dev-build
 	@docker run -it --user jovyan --name dev-build \
-		$(REPO) bash -c 'pip install --no-binary :all: $(CMS_PACKAGE); \
-			$(PYTHON2_SETUP); \
+		$(REPO) bash -c 'pip install --no-binary :all: $(CMS_PACKAGE) && \
+			jupyter cms install --user --symlink --overwrite && \
+			jupyter cms activate && \
+			$(PYTHON2_SETUP) && \
 			pip install --no-binary :all: $(CMS_PACKAGE)'
 	@docker commit dev-build $(DEV_REPO)
 	@-docker rm -f dev-build
