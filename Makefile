@@ -84,7 +84,7 @@ sdist:
 
 test: CMD?=bash -c 'cd /src; python3 -B -m unittest discover -s test'
 test:
-	@echo No tests yet ...	
+	@echo No tests yet ...
 # @docker run -it --rm \
 # 	-v `pwd`:/src \
 # 	$(DEV_REPO) $(CMD)

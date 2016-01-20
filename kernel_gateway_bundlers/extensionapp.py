@@ -5,7 +5,7 @@ import os.path
 import sys
 
 from notebook.services.config import ConfigManager
-from notebook.nbextensions import (EnableNBExtensionApp, 
+from notebook.nbextensions import (EnableNBExtensionApp,
     DisableNBExtensionApp, flags, aliases)
 from traitlets.config.application import catch_config_error
 from traitlets.config.application import Application
@@ -46,9 +46,9 @@ class ExtensionActivateApp(EnableNBExtensionApp):
         return [ExtensionActivateApp, EnableNBExtensionApp]
 
     def start(self):
-        self.log.info("Activating jupyter_dashboards_bundlers JS notebook extensions")
+        self.log.info("Activating jupyter_kernel_gateway_bundlers JS notebook extensions")
         cm = ConfigManager(parent=self, config=self.config)
-        cm.update('notebook', { 
+        cm.update('notebook', {
             'jupyter_cms_bundlers': {
                 'microservice_dockerfile_download': {
                     'label': 'Microservice Docker bundle (.zip)',
@@ -77,7 +77,7 @@ class ExtensionDeactivateApp(DisableNBExtensionApp):
     def start(self):
         self.log.info("Deactivating jupyter_kernel_gateway_bundlers notebook extension")
         cm = ConfigManager(parent=self, config=self.config)
-        cm.update('notebook', { 
+        cm.update('notebook', {
             'jupyter_cms_bundlers': {
                 'microservice_dockerfile_download' : None
             }
