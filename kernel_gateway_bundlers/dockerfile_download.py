@@ -3,30 +3,30 @@
 import os
 import io
 import zipfile
-from ipython_genutils.py3compat import cast_bytes
 
 # Starting simply, keep all assets here in Python
-DOCKERFILE_TMPL = '''
+DOCKERFILE_TMPL = r'''
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-FROM jupyter/minimal-notebook:latest
+FROM jupyter/minimal-kernel:latest
+
+USER root
+
+# TODO: add additional kernels and libraries needed here manually for now
+# or switch the FROM line to use a jupyter/* image with your prereqs installed
+# and pip install kernel_gateway here
 
 USER jovyan
 
-# TODO: add additional kernels and libraries needed here manually for now
-
-# Install Kernel Gateway
-RUN pip install jupyter_kernel_gateway>=0.2.0
 # Add notebook file
-COPY {notebook_filename} /srv/microservice_definition.ipynb
+COPY '{notebook_filename}' /srv/microservice_definition.ipynb
 
 # Configure container startup
-ENTRYPOINT ["tini", "--", "jupyter", "kernelgateway"]
-CMD [ \\
-    "--KernelGatewayApp.ip=0.0.0.0", \\
-    "--KernelGatewayApp.seed_uri=/srv/microservice_definition.ipynb", \\
-    "--KernelGatewayApp.api=notebook-http" \\
+CMD [ \
+    "--KernelGatewayApp.ip=0.0.0.0", \
+    "--KernelGatewayApp.seed_uri=/srv/microservice_definition.ipynb", \
+    "--KernelGatewayApp.api=notebook-http" \
 ]
 '''
 
@@ -39,7 +39,7 @@ MAKEFILE_TMPL = '''\
 REPO:={notebook_name}
 
 help:
-\t@cat README
+\t@cat README.md
 
 build:
 \tdocker build -t $(REPO) .
