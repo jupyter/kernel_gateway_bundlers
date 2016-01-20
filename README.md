@@ -16,7 +16,19 @@ Collection of reference implementation bundlers that convert, package, and deplo
 
 ## Install It
 
-`pip install jupyter_kernel_gateway_bundlers`
+```bash
+# install the python package
+pip install kernel_gateway_bundlers
+# enable the extension in your ~/.jupyter config
+jupyter kernel_gateway_bundlers activate
+```
+
+## Uninstall It
+
+```bash
+jupyter kernel_gateway_bundlers deactivate
+pip uninstall kernel_gateway_bundlers
+```
 
 ## Use It
 
